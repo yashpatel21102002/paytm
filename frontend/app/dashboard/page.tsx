@@ -8,7 +8,11 @@ import { useEffect, useState } from "react";
 const Page = () => {
   const [balance, setBalance] = useState(null);
   const [allUser, setAllUser] = useState([]);
-  var token = localStorage.getItem("token");
+  var token:string|null
+  if (typeof window !== 'undefined') {
+     token = localStorage.getItem("token");
+  }
+  
   useEffect(() => {
     const fetchBalance = async () => {
       try {

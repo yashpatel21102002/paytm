@@ -30,7 +30,10 @@ function Page({ user }) {
   const { toast } = useToast();
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("token");
+  var token: string | null;
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+  }
   console.log(user);
   const handletransaction = async () => {
     setLoading(true);

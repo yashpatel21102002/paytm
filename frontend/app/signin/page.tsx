@@ -62,7 +62,10 @@ function Page() {
         console.log(response);
 
         router.push(`/dashboard`);
-        localStorage.setItem("token",response.data.token);
+
+        if (typeof window !== "undefined") {
+          localStorage.setItem("token", response.data.token);
+        }
       })
       .catch((error) => {
         console.log(error.response.data.message);
